@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a venue</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
+        integrity="sha512-MQXduO8IQnJVq1qmySpN87QQkiR1bZHtorbJBD0tzy7/0U9+YIC93QWHeGTEoojMVHWWNkoCp8V6OzVSYrX0oQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <form class="formContainer">
+        <div class="formBody">
+            <p>Book A Venue</p>
+            <div class="formField">
+                <label for="fullName">Full Name</label>
+                <input placeholder="E.g John Doe" required type="text" id="fullName">
+            </div>
+            <div class="formField">
+                <label for="phoneNumber">Phone Number</label>
+                <input required placeholder="+1 234 678 8731" type="tel" id="phoneNumber">
+            </div>
+            <div class="formField">
+                <label for="email">Email Address</label>
+                <input required type="email" id="email" placeholder="E.g abcd@gmail.com">
+            </div>
+            <div class="formField">
+                <label for="eventType">Event Type</label>
+                <select name="eventType" id="eventType">
+                    <option value="kids-party">Kid's Party</option>
+                    <option value="family-event">Family Event</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="formField">
+                <label for="Edate">Event Date</label>
+                <input type="text" name="Edate" id="Edate">
+            </div>
+
+            <div class="formField">
+                <label for="startTime">Start Time</label>
+                <input required type="time" value="00:00" name="startTime" id="startTime">
+            </div>
+            <div class="formField">
+                <label for="endTime">End Time</label>
+                <input required type="time" value="12:00" name="endTime" id="endTime">
+            </div>
+            <button>Book Venue</button>
+        </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"
+        integrity="sha512-K/oyQtMXpxI4+K0W7H25UopjM8pzq0yrVdFdG21Fh5dBe91I40pDd9A4lzNlHPHBIP2cwZuoxaUSX0GJSObvGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        //   make sure everything is loaded first you need to make sure the placeholder is today 
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateInputEl = document.getElementById("Edate");
+
+            const today = new Date();
+            const day = today.getDate();
+            const month = today.getMonth() + 1;
+            const year = today.getFullYear();
+            dateInputEl.placeholder = `${year}-${month}-${day}`
+
+            flatpickr("#Edate", {
+                minDate: "today"
+            });
+        })
+    </script>
+</body>
+
+</html>
